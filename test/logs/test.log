@@ -1,0 +1,361 @@
+Compiling 1 files with Solc 0.8.20
+Solc 0.8.20 finished in 754.96ms
+Compiler run successful!
+
+Ran 4 tests for test/UniswapV2Router02.t.sol:UniswapV2Router02Test
+[PASS] test_AddLiquidity() (gas: 284263)
+Traces:
+  [287063] UniswapV2Router02Test::test_AddLiquidity()
+    ├─ [0] VM::startPrank(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Return]
+    ├─ [2851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 990000000000000000000000 [9.9e23]
+    ├─ [2851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 990000000000000000000000 [9.9e23]
+    ├─ [245580] UniswapV2Router02::addLiquidity(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], 1000000000000000000 [1e18], 4000000000000000000 [4e18], 0, 0, UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2)
+    │   ├─ [3205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [3150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 0, 0, 0
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [31166] ERC20Test::transferFrom(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], 1000000000000000000 [1e18])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], value: 1000000000000000000 [1e18])
+    │   │   └─ ← [Return] true
+    │   ├─ [31166] ERC20Test::transferFrom(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], 4000000000000000000 [4e18])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], value: 4000000000000000000 [4e18])
+    │   │   └─ ← [Return] true
+    │   ├─ [158802] UniswapV2Pair::mint(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   ├─ [851] ERC20Test::balanceOf(UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]) [staticcall]
+    │   │   │   └─ ← [Return] 1000000000000000000 [1e18]
+    │   │   ├─ [851] ERC20Test::balanceOf(UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]) [staticcall]
+    │   │   │   └─ ← [Return] 4000000000000000000 [4e18]
+    │   │   ├─ [2506] UniswapV2Factory::feeTo() [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0000000000000000000000000000000000000000, value: 1000)
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1999999999999999000 [1.999e18])
+    │   │   ├─ emit Sync(reserve0: 1000000000000000000 [1e18], reserve1: 4000000000000000000 [4e18])
+    │   │   ├─ emit Mint(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0: 1000000000000000000 [1e18], amount1: 4000000000000000000 [4e18])
+    │   │   └─ ← [Return] 1999999999999999000 [1.999e18]
+    │   └─ ← [Return] 1000000000000000000 [1e18], 4000000000000000000 [4e18], 1999999999999999000 [1.999e18]
+    ├─ [0] VM::assertEq(1000000000000000000 [1e18], 1000000000000000000 [1e18]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::assertEq(4000000000000000000 [4e18], 4000000000000000000 [4e18]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::assertEq(1999999999999999000 [1.999e18], 1999999999999999000 [1.999e18]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 989999000000000000000000 [9.899e23]
+    ├─ [0] VM::assertEq(989999000000000000000000 [9.899e23], 989999000000000000000000 [9.899e23]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 989996000000000000000000 [9.899e23]
+    ├─ [0] VM::assertEq(989996000000000000000000 [9.899e23], 989996000000000000000000 [9.899e23]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [870] UniswapV2Pair::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 1999999999999999000 [1.999e18]
+    ├─ [0] VM::assertEq(1999999999999999000 [1.999e18], 1999999999999999000 [1.999e18]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    └─ ← [Stop]
+
+[PASS] test_SwapExactTokensForTokens() (gas: 342389)
+Traces:
+  [347989] UniswapV2Router02Test::test_SwapExactTokensForTokens()
+    ├─ [0] VM::startPrank(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Return]
+    ├─ [255768] UniswapV2Router02::addLiquidity(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], 5000000000000000000 [5e18], 10000000000000000000 [1e19], 0, 0, UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2)
+    │   ├─ [3205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [3150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 0, 0, 0
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [33166] ERC20Test::transferFrom(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], 5000000000000000000 [5e18])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], value: 5000000000000000000 [5e18])
+    │   │   └─ ← [Return] true
+    │   ├─ [33166] ERC20Test::transferFrom(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], 10000000000000000000 [1e19])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], value: 10000000000000000000 [1e19])
+    │   │   └─ ← [Return] true
+    │   ├─ [159990] UniswapV2Pair::mint(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   ├─ [851] ERC20Test::balanceOf(UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]) [staticcall]
+    │   │   │   └─ ← [Return] 5000000000000000000 [5e18]
+    │   │   ├─ [851] ERC20Test::balanceOf(UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]) [staticcall]
+    │   │   │   └─ ← [Return] 10000000000000000000 [1e19]
+    │   │   ├─ [2506] UniswapV2Factory::feeTo() [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0000000000000000000000000000000000000000, value: 1000)
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 7071067811865474244 [7.071e18])
+    │   │   ├─ emit Sync(reserve0: 5000000000000000000 [5e18], reserve1: 10000000000000000000 [1e19])
+    │   │   ├─ emit Mint(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0: 5000000000000000000 [5e18], amount1: 10000000000000000000 [1e19])
+    │   │   └─ ← [Return] 7071067811865474244 [7.071e18]
+    │   └─ ← [Return] 5000000000000000000 [5e18], 10000000000000000000 [1e19], 7071067811865474244 [7.071e18]
+    ├─ [851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 989995000000000000000000 [9.899e23]
+    ├─ [851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 989990000000000000000000 [9.899e23]
+    ├─ [5754] UniswapV2Router02::getReserves(UniswapV2Factory: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 5000000000000000000 [5e18], 10000000000000000000 [1e19], 1
+    │   └─ ← [Return] 5000000000000000000 [5e18], 10000000000000000000 [1e19]
+    ├─ [2247] UniswapV2Router02::getAmountOut(1000000000000000000 [1e18], 5000000000000000000 [5e18], 10000000000000000000 [1e19]) [staticcall]
+    │   └─ ← [Return] 1662497915624478906 [1.662e18]
+    ├─ [47963] UniswapV2Router02::swapExactTokensForTokens(1000000000000000000 [1e18], 0, [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9, 0xc7183455a4C133Ae270771860664b6B7ec320bB1], UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2)
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 5000000000000000000 [5e18], 10000000000000000000 [1e19], 1
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [4466] ERC20Test::transferFrom(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], 1000000000000000000 [1e18])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], value: 1000000000000000000 [1e18])
+    │   │   └─ ← [Return] true
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [23579] UniswapV2Pair::swap(0, 1662497915624478906 [1.662e18], UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [3850] ERC20Test::transfer(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1662497915624478906 [1.662e18])
+    │   │   │   ├─ emit Transfer(from: UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], to: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1662497915624478906 [1.662e18])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [851] ERC20Test::balanceOf(UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]) [staticcall]
+    │   │   │   └─ ← [Return] 6000000000000000000 [6e18]
+    │   │   ├─ [851] ERC20Test::balanceOf(UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]) [staticcall]
+    │   │   │   └─ ← [Return] 8337502084375521094 [8.337e18]
+    │   │   ├─ emit Sync(reserve0: 6000000000000000000 [6e18], reserve1: 8337502084375521094 [8.337e18])
+    │   │   ├─ emit Swap(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0In: 1000000000000000000 [1e18], amount1In: 0, amount0Out: 0, amount1Out: 1662497915624478906 [1.662e18], to: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop]
+    │   └─ ← [Return] [1000000000000000000 [1e18], 1662497915624478906 [1.662e18]]
+    ├─ [0] VM::assertEq(1000000000000000000 [1e18], 1000000000000000000 [1e18]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::assertEq(1662497915624478906 [1.662e18], 1662497915624478906 [1.662e18]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 989994000000000000000000 [9.899e23]
+    ├─ [0] VM::assertEq(989994000000000000000000 [9.899e23], 989994000000000000000000 [9.899e23]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 989991662497915624478906 [9.899e23]
+    ├─ [0] VM::assertEq(989991662497915624478906 [9.899e23], 989991662497915624478906 [9.899e23]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    └─ ← [Stop]
+
+[PASS] test_SwapTokensForExactTokens() (gas: 339670)
+Traces:
+  [345270] UniswapV2Router02Test::test_SwapTokensForExactTokens()
+    ├─ [0] VM::startPrank(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Return]
+    ├─ [255768] UniswapV2Router02::addLiquidity(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1], 5000000000000000000 [5e18], 10000000000000000000 [1e19], 0, 0, UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2)
+    │   ├─ [3205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [3150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 0, 0, 0
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [33166] ERC20Test::transferFrom(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], 5000000000000000000 [5e18])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], value: 5000000000000000000 [5e18])
+    │   │   └─ ← [Return] true
+    │   ├─ [33166] ERC20Test::transferFrom(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], 10000000000000000000 [1e19])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], value: 10000000000000000000 [1e19])
+    │   │   └─ ← [Return] true
+    │   ├─ [159990] UniswapV2Pair::mint(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   ├─ [851] ERC20Test::balanceOf(UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]) [staticcall]
+    │   │   │   └─ ← [Return] 5000000000000000000 [5e18]
+    │   │   ├─ [851] ERC20Test::balanceOf(UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]) [staticcall]
+    │   │   │   └─ ← [Return] 10000000000000000000 [1e19]
+    │   │   ├─ [2506] UniswapV2Factory::feeTo() [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0000000000000000000000000000000000000000, value: 1000)
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 7071067811865474244 [7.071e18])
+    │   │   ├─ emit Sync(reserve0: 5000000000000000000 [5e18], reserve1: 10000000000000000000 [1e19])
+    │   │   ├─ emit Mint(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0: 5000000000000000000 [5e18], amount1: 10000000000000000000 [1e19])
+    │   │   └─ ← [Return] 7071067811865474244 [7.071e18]
+    │   └─ ← [Return] 5000000000000000000 [5e18], 10000000000000000000 [1e19], 7071067811865474244 [7.071e18]
+    ├─ [851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 989995000000000000000000 [9.899e23]
+    ├─ [851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 989990000000000000000000 [9.899e23]
+    ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   └─ ← [Return] 5000000000000000000 [5e18], 10000000000000000000 [1e19], 1
+    ├─ [2397] UniswapV2Router02::getAmountIn(1000000000000000000 [1e18], 5000000000000000000 [5e18], 10000000000000000000 [1e19]) [staticcall]
+    │   └─ ← [Return] 557227237267357629 [5.572e17]
+    ├─ [47975] UniswapV2Router02::swapTokensForExactTokens(1000000000000000000 [1e18], 1500000000000000000 [1.5e18], [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9, 0xc7183455a4C133Ae270771860664b6B7ec320bB1], UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2)
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 5000000000000000000 [5e18], 10000000000000000000 [1e19], 1
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [4466] ERC20Test::transferFrom(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], 557227237267357629 [5.572e17])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], value: 557227237267357629 [5.572e17])
+    │   │   └─ ← [Return] true
+    │   ├─ [1205] UniswapV2Factory::getPair(ERC20Test: [0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9], ERC20Test: [0xc7183455a4C133Ae270771860664b6B7ec320bB1]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]
+    │   ├─ [23579] UniswapV2Pair::swap(0, 1000000000000000000 [1e18], UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0x)
+    │   │   ├─ [3850] ERC20Test::transfer(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000 [1e18])
+    │   │   │   ├─ emit Transfer(from: UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9], to: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1000000000000000000 [1e18])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [851] ERC20Test::balanceOf(UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]) [staticcall]
+    │   │   │   └─ ← [Return] 5557227237267357629 [5.557e18]
+    │   │   ├─ [851] ERC20Test::balanceOf(UniswapV2Pair: [0xc22B1Ae4Fa3aAff232e5AeA8E70B4dFD6eAbfEf9]) [staticcall]
+    │   │   │   └─ ← [Return] 9000000000000000000 [9e18]
+    │   │   ├─ emit Sync(reserve0: 5557227237267357629 [5.557e18], reserve1: 9000000000000000000 [9e18])
+    │   │   ├─ emit Swap(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0In: 557227237267357629 [5.572e17], amount1In: 0, amount0Out: 0, amount1Out: 1000000000000000000 [1e18], to: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   └─ ← [Stop]
+    │   └─ ← [Return] [557227237267357629 [5.572e17], 1000000000000000000 [1e18]]
+    ├─ [0] VM::assertEq(557227237267357629 [5.572e17], 557227237267357629 [5.572e17]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::assertEq(1000000000000000000 [1e18], 1000000000000000000 [1e18]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 989994442772762732642371 [9.899e23]
+    ├─ [0] VM::assertEq(989994442772762732642371 [9.899e23], 989994442772762732642371 [9.899e23]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [851] ERC20Test::balanceOf(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [staticcall]
+    │   └─ ← [Return] 989991000000000000000000 [9.899e23]
+    ├─ [0] VM::assertEq(989991000000000000000000 [9.899e23], 989991000000000000000000 [9.899e23]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    └─ ← [Stop]
+
+[PASS] test_SwapWithFeeToken() (gas: 4577096)
+Traces:
+  [4656696] UniswapV2Router02Test::test_SwapWithFeeToken()
+    ├─ [0] VM::startPrank(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   └─ ← [Return]
+    ├─ [876933] → new TokenWithFee@0xa0Cb889707d426A7A386870A03bc70d1b0697598
+    │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 1000000000000000000000000 [1e24])
+    │   └─ ← [Return] 3910 bytes of code
+    ├─ [50984] TokenWithFee::transfer(ECRecover: [0x0000000000000000000000000000000000000001], 10000000000000000000000 [1e22])
+    │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], value: 100000000000000000000 [1e20])
+    │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: ECRecover: [0x0000000000000000000000000000000000000001], value: 9900000000000000000000 [9.9e21])
+    │   └─ ← [Return] true
+    ├─ [25298] TokenWithFee::approve(UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [3197788] UniswapV2Factory::createPair(TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   ├─ [3035969] → new UniswapV2Pair@0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39
+    │   │   └─ ← [Return] 14827 bytes of code
+    │   ├─ [45236] UniswapV2Pair::initialize(WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598])
+    │   │   └─ ← [Stop]
+    │   ├─ emit PairCreated(token0: WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], token1: TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], pair: UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39], : 2)
+    │   └─ ← [Return] UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]
+    ├─ [275795] UniswapV2Router02::addLiquidityETH{value: 10000000000000000000}(TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], 100000000000000000000 [1e20], 0, 0, UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2)
+    │   ├─ [1205] UniswapV2Factory::getPair(TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]
+    │   ├─ [1205] UniswapV2Factory::getPair(TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]
+    │   ├─ [3150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 0, 0, 0
+    │   ├─ [1205] UniswapV2Factory::getPair(TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]
+    │   ├─ [29700] TokenWithFee::transferFrom(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39], 100000000000000000000 [1e20])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], value: 1000000000000000000 [1e18])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39], value: 99000000000000000000 [9.9e19])
+    │   │   └─ ← [Return] true
+    │   ├─ [24174] WETH9::deposit{value: 10000000000000000000}()
+    │   │   ├─ emit Deposit(dst: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], wad: 10000000000000000000 [1e19])
+    │   │   └─ ← [Stop]
+    │   ├─ [26057] WETH9::transfer(UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39], 10000000000000000000 [1e19])
+    │   │   ├─ emit Transfer(from: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39], value: 10000000000000000000 [1e19])
+    │   │   └─ ← [Return] true
+    │   ├─ [170251] UniswapV2Pair::mint(UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496])
+    │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]) [staticcall]
+    │   │   │   └─ ← [Return] 10000000000000000000 [1e19]
+    │   │   ├─ [851] TokenWithFee::balanceOf(UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]) [staticcall]
+    │   │   │   └─ ← [Return] 99000000000000000000 [9.9e19]
+    │   │   ├─ [2506] UniswapV2Factory::feeTo() [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0000000000000000000000000000000000000000, value: 1000)
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: UniswapV2Router02Test: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], value: 31464265445104545409 [3.146e19])
+    │   │   ├─ emit Sync(reserve0: 10000000000000000000 [1e19], reserve1: 99000000000000000000 [9.9e19])
+    │   │   ├─ emit Mint(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0: 10000000000000000000 [1e19], amount1: 99000000000000000000 [9.9e19])
+    │   │   └─ ← [Return] 31464265445104545409 [3.146e19]
+    │   └─ ← [Return] 100000000000000000000 [1e20], 10000000000000000000 [1e19], 31464265445104545409 [3.146e19]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] VM::startPrank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return]
+    ├─ [25298] TokenWithFee::approve(UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   ├─ emit Approval(owner: ECRecover: [0x0000000000000000000000000000000000000001], spender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 115792089237316195423570985008687907853269984665640564039457584007913129639935 [1.157e77])
+    │   └─ ← [Return] true
+    ├─ [132695] UniswapV2Router02::swapExactTokensForETHSupportingFeeOnTransferTokens(1000000000000000000 [1e18], 0, [0xa0Cb889707d426A7A386870A03bc70d1b0697598, 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], ECRecover: [0x0000000000000000000000000000000000000001], 2)
+    │   ├─ [1205] UniswapV2Factory::getPair(TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]
+    │   ├─ [7800] TokenWithFee::transferFrom(ECRecover: [0x0000000000000000000000000000000000000001], UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39], 1000000000000000000 [1e18])
+    │   │   ├─ emit Transfer(from: ECRecover: [0x0000000000000000000000000000000000000001], to: TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], value: 10000000000000000 [1e16])
+    │   │   ├─ emit Transfer(from: ECRecover: [0x0000000000000000000000000000000000000001], to: UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39], value: 990000000000000000 [9.9e17])
+    │   │   └─ ← [Return] true
+    │   ├─ [1205] UniswapV2Factory::getPair(TokenWithFee: [0xa0Cb889707d426A7A386870A03bc70d1b0697598], WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 10000000000000000000 [1e19], 99000000000000000000 [9.9e19], 1
+    │   ├─ [851] TokenWithFee::balanceOf(UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]) [staticcall]
+    │   │   └─ ← [Return] 99990000000000000000 [9.999e19]
+    │   ├─ [60859] UniswapV2Pair::swap(98715803439706129 [9.871e16], 0, UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 0x)
+    │   │   ├─ [24057] WETH9::transfer(UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 98715803439706129 [9.871e16])
+    │   │   │   ├─ emit Transfer(from: UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39], to: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 98715803439706129 [9.871e16])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]) [staticcall]
+    │   │   │   └─ ← [Return] 9901284196560293871 [9.901e18]
+    │   │   ├─ [851] TokenWithFee::balanceOf(UniswapV2Pair: [0x6E2803b07E5b37757E5B53b4240eD89A772Bbb39]) [staticcall]
+    │   │   │   └─ ← [Return] 99990000000000000000 [9.999e19]
+    │   │   ├─ emit Sync(reserve0: 9901284196560293871 [9.901e18], reserve1: 99990000000000000000 [9.999e19])
+    │   │   ├─ emit Swap(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0In: 0, amount1In: 990000000000000000 [9.9e17], amount0Out: 98715803439706129 [9.871e16], amount1Out: 0, to: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a])
+    │   │   └─ ← [Stop]
+    │   ├─ [824] WETH9::balanceOf(UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a]) [staticcall]
+    │   │   └─ ← [Return] 98715803439706129 [9.871e16]
+    │   ├─ [9763] WETH9::withdraw(98715803439706129 [9.871e16])
+    │   │   ├─ [89] UniswapV2Router02::receive{value: 98715803439706129}()
+    │   │   │   └─ ← [Stop]
+    │   │   ├─ emit Withdrawal(src: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], wad: 98715803439706129 [9.871e16])
+    │   │   └─ ← [Stop]
+    │   ├─ [3000] ECRecover::fallback{value: 98715803439706129}()
+    │   │   └─ ← [Return]
+    │   └─ ← [Stop]
+    ├─ [0] VM::assertTrue(true, "ETH balance should increase") [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    └─ ← [Stop]
+
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 3.79ms (5.18ms CPU time)
+
+Ran 2 tests for test/Counter.t.sol:CounterTest
+[PASS] testFuzz_SetNumber(uint256) (runs: 256, μ: 32120, ~: 32354)
+Traces:
+  [32354] CounterTest::testFuzz_SetNumber(25190143740371309885504532170494537452449772 [2.519e43])
+    ├─ [22492] Counter::setNumber(25190143740371309885504532170494537452449772 [2.519e43])
+    │   └─ ← [Stop]
+    ├─ [424] Counter::number() [staticcall]
+    │   └─ ← [Return] 25190143740371309885504532170494537452449772 [2.519e43]
+    ├─ [0] VM::assertEq(25190143740371309885504532170494537452449772 [2.519e43], 25190143740371309885504532170494537452449772 [2.519e43]) [staticcall]
+    │   └─ ← [Return]
+    └─ ← [Stop]
+
+[PASS] test_Increment() (gas: 31852)
+Traces:
+  [31852] CounterTest::test_Increment()
+    ├─ [22419] Counter::increment()
+    │   └─ ← [Stop]
+    ├─ [424] Counter::number() [staticcall]
+    │   └─ ← [Return] 1
+    ├─ [0] VM::assertEq(1, 1) [staticcall]
+    │   └─ ← [Return]
+    └─ ← [Stop]
+
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 10.94ms (10.67ms CPU time)
+
+Ran 2 test suites in 14.36ms (14.72ms CPU time): 6 tests passed, 0 failed, 0 skipped (6 total tests)
