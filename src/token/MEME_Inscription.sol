@@ -36,7 +36,10 @@ contract MEME_Inscription {
 - 管理费用接收地址：通过 feeTo 和 feeToSetter 管理协议费用的接收地址 */
     IUniswapV2Factory public immutable uniswapV2Factory;
     address public immutable WETH;
-
+    
+    // 添加receive函数，使合约能够接收ETH
+    receive() external payable {}
+    
     // 修改构造函数，接受工厂地址 (IUniswapV2Factory) 和路由器地址 (address) 作为参数
     constructor(IUniswapV2Factory _uniswapV2Factory, address _uniswapV2RouterAddress) {
         implementation = address(new MEME_Token());

@@ -1,0 +1,627 @@
+Compiling 51 files with Solc 0.8.20
+Solc 0.8.20 finished in 2.64s
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+   --> test/TWAP_test.t.sol:239:14:
+    |
+239 |             (uint256 timestamp, uint256 price, string memory description) = twapMeme.getSnapshot(i);
+    |              ^^^^^^^^^^^^^^^^^
+
+Warning (2018): Function state mutability can be restricted to view
+   --> test/TWAP_test.t.sol:232:5:
+    |
+232 |     function _summarizePriceChanges() internal {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 1 test for test/TWAP_test.t.sol:TWAPTest
+[PASS] test_TWAPPriceChanges() (gas: 5296921)
+Logs:
+  Initial Price (ETH/MEME): 0
+  Second Liquidity Price (ETH/MEME): 0
+  First Buy Price (ETH/MEME): 0
+  User3 MEME Balance after first buy: 200
+  Second Buy Price (ETH/MEME): 1
+  User4 MEME Balance after second buy: 2
+  Third Buy Price (ETH/MEME): 7
+  User1 MEME Balance after third buy: 0
+  Total snapshots taken: 5
+  Snapshot 0: Initial Liquidity - Price: 100000000000000 wei
+  Snapshot 1: Second Liquidity - Price: 100000000000000 wei
+  Snapshot 2: First Buy - Price: 223463254015466983 wei
+  Snapshot 3: Second Buy - Price: 1951043256926444937 wei
+  Snapshot 4: Third Buy - Price: 7736956997117663737 wei
+  Overall TWAP (Initial to Third Buy): 5001
+  TWAP (Second Liquidity to Third Buy): 3334
+  TWAP (First Buy to Third Buy): 2
+  
+Price Changes Summary:
+  Initial Liquidity: 100000000000000 wei
+  Second Liquidity: 100000000000000 wei
+    Change from previous: 0%
+  First Buy: 223463254015466983 wei
+    Change from previous: 223363%
+  Second Buy: 1951043256926444937 wei
+    Change from previous: 773%
+  Third Buy: 7736956997117663737 wei
+    Change from previous: 296%
+
+Traces:
+  [5734721] TWAPTest::test_TWAPPriceChanges()
+    ├─ [0] VM::prank(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF])
+    │   └─ ← [Return]
+    ├─ [234276] MEME_Inscription::deployInscription("MEME Token", 1000000 [1e6], 100, 100000000000000 [1e14])
+    │   ├─ [9031] → new <unknown>@0x03701a3db17248c79AA6512CcDC89c45bc1443E2
+    │   │   └─ ← [Return] 45 bytes of code
+    │   ├─ [120001] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::initialize("MEME Token", 1000000 [1e6], MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA])
+    │   │   ├─ [117308] MEME_Token::initialize("MEME Token", 1000000 [1e6], MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA]) [delegatecall]
+    │   │   │   └─ ← [Stop]
+    │   │   └─ ← [Return]
+    │   ├─ emit MemeDeployed(token: 0x03701a3db17248c79AA6512CcDC89c45bc1443E2, symbol: "MEME Token", totalSupply: 1000000 [1e6], perMint: 100, price: 100000000000000 [1e14])
+    │   └─ ← [Return] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2
+    ├─ [0] VM::prank(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF])
+    │   └─ ← [Return]
+    ├─ [3624953] MEME_Inscription::mintInscription{value: 10000000000000000}(0x03701a3db17248c79AA6512CcDC89c45bc1443E2)
+    │   ├─ [398] MEME_Token::decimals() [staticcall]
+    │   │   └─ ← [Return] 18
+    │   ├─ [621] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::totalSupply() [staticcall]
+    │   │   ├─ [455] MEME_Token::totalSupply() [delegatecall]
+    │   │   │   └─ ← [Return] 1000000000000000000000000 [1e24]
+    │   │   └─ ← [Return] 1000000000000000000000000 [1e24]
+    │   ├─ [621] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::minted() [staticcall]
+    │   │   ├─ [455] MEME_Token::minted() [delegatecall]
+    │   │   │   └─ ← [Return] 0
+    │   │   └─ ← [Return] 0
+    │   ├─ [48729] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::mint(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], 100000000000000000000 [1e20])
+    │   │   ├─ [48554] MEME_Token::mint(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], 100000000000000000000 [1e20]) [delegatecall]
+    │   │   │   ├─ emit MintCalled(caller: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], owner: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], to: user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], amount: 100000000000000000000 [1e20])
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], value: 100000000000000000000 [1e20])
+    │   │   │   └─ ← [Stop]
+    │   │   └─ ← [Return]
+    │   ├─ [0] user1::fallback{value: 9500000000000000}()
+    │   │   └─ ← [Stop]
+    │   ├─ [3205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000
+    │   ├─ [28829] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::mint(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], 5000000000000000000 [5e18])
+    │   │   ├─ [28654] MEME_Token::mint(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], 5000000000000000000 [5e18]) [delegatecall]
+    │   │   │   ├─ emit MintCalled(caller: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], owner: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], to: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], amount: 5000000000000000000 [5e18])
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], value: 5000000000000000000 [5e18])
+    │   │   │   └─ ← [Stop]
+    │   │   └─ ← [Return]
+    │   ├─ [25422] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::approve(UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 5000000000000000000 [5e18])
+    │   │   ├─ [25244] MEME_Token::approve(UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 5000000000000000000 [5e18]) [delegatecall]
+    │   │   │   ├─ emit Approval(owner: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], spender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 5000000000000000000 [5e18])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Return] true
+    │   ├─ [3483912] UniswapV2Router02::addLiquidityETH{value: 500000000000000}(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, 5000000000000000000 [5e18], 0, 0, owner: [0x7c8999dC9a822c1f0Df42023113EDB4FDd543266], 1)
+    │   │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000
+    │   │   ├─ [3212878] UniswapV2Factory::createPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   ├─ [3035969] → new UniswapV2Pair@0x38D26a1eF18E633f4702F82cc693730aD69F037d
+    │   │   │   │   └─ ← [Return] 14827 bytes of code
+    │   │   │   ├─ [45236] UniswapV2Pair::initialize(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f])
+    │   │   │   │   └─ ← [Stop]
+    │   │   │   ├─ emit PairCreated(token0: 0x03701a3db17248c79AA6512CcDC89c45bc1443E2, token1: WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], pair: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], : 1)
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [3150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 0, 0, 0
+    │   │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [29792] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::transferFrom(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 5000000000000000000 [5e18])
+    │   │   │   ├─ [29608] MEME_Token::transferFrom(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 5000000000000000000 [5e18]) [delegatecall]
+    │   │   │   │   ├─ emit Transfer(from: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], to: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], value: 5000000000000000000 [5e18])
+    │   │   │   │   ├─ emit Approval(owner: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], spender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 0)
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [24174] WETH9::deposit{value: 500000000000000}()
+    │   │   │   ├─ emit Deposit(dst: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], wad: 500000000000000 [5e14])
+    │   │   │   └─ ← [Stop]
+    │   │   ├─ [26057] WETH9::transfer(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 500000000000000 [5e14])
+    │   │   │   ├─ emit Transfer(from: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], value: 500000000000000 [5e14])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [164528] UniswapV2Pair::mint(owner: [0x7c8999dC9a822c1f0Df42023113EDB4FDd543266])
+    │   │   │   ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   ├─ [896] MEME_Token::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 5000000000000000000 [5e18]
+    │   │   │   │   └─ ← [Return] 5000000000000000000 [5e18]
+    │   │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   └─ ← [Return] 500000000000000 [5e14]
+    │   │   │   ├─ [2506] UniswapV2Factory::feeTo() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x0000000000000000000000000000000000000000, value: 1000)
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: owner: [0x7c8999dC9a822c1f0Df42023113EDB4FDd543266], value: 49999999999999000 [4.999e16])
+    │   │   │   ├─ emit Sync(reserve0: 5000000000000000000 [5e18], reserve1: 500000000000000 [5e14])
+    │   │   │   ├─ emit Mint(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0: 5000000000000000000 [5e18], amount1: 500000000000000 [5e14])
+    │   │   │   └─ ← [Return] 49999999999999000 [4.999e16]
+    │   │   └─ ← [Return] 5000000000000000000 [5e18], 500000000000000 [5e14], 49999999999999000 [4.999e16]
+    │   ├─ emit MemeMinted(token: 0x03701a3db17248c79AA6512CcDC89c45bc1443E2, minter: user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], amount: 100)
+    │   └─ ← [Stop]
+    ├─ [0] VM::startPrank(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF])
+    │   └─ ← [Return]
+    ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF]) [staticcall]
+    │   ├─ [896] MEME_Token::balanceOf(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF]) [delegatecall]
+    │   │   └─ ← [Return] 100000000000000000000 [1e20]
+    │   └─ ← [Return] 100000000000000000000 [1e20]
+    ├─ [25422] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::approve(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], 100000000000000000000 [1e20])
+    │   ├─ [25244] MEME_Token::approve(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], 100000000000000000000 [1e20]) [delegatecall]
+    │   │   ├─ emit Approval(owner: user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], spender: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], value: 100000000000000000000 [1e20])
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [186405] MEME_Inscription::addLiquidity{value: 10000000000000000000}(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, 100000000000000000000 [1e20], 0, 0)
+    │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   ├─ [27792] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::transferFrom(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], 100000000000000000000 [1e20])
+    │   │   ├─ [27608] MEME_Token::transferFrom(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], 100000000000000000000 [1e20]) [delegatecall]
+    │   │   │   ├─ emit Transfer(from: user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], to: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], value: 100000000000000000000 [1e20])
+    │   │   │   ├─ emit Approval(owner: user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], spender: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], value: 0)
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Return] true
+    │   ├─ [23322] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::approve(UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 100000000000000000000 [1e20])
+    │   │   ├─ [23144] MEME_Token::approve(UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 100000000000000000000 [1e20]) [delegatecall]
+    │   │   │   ├─ emit Approval(owner: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], spender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 100000000000000000000 [1e20])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Return] true
+    │   ├─ [121826] UniswapV2Router02::addLiquidityETH{value: 10000000000000000000}(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, 100000000000000000000 [1e20], 0, 0, user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], 1)
+    │   │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 5000000000000000000 [5e18], 500000000000000 [5e14], 1
+    │   │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [7892] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::transferFrom(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 100000000000000000000 [1e20])
+    │   │   │   ├─ [7708] MEME_Token::transferFrom(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 100000000000000000000 [1e20]) [delegatecall]
+    │   │   │   │   ├─ emit Transfer(from: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], to: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], value: 100000000000000000000 [1e20])
+    │   │   │   │   ├─ emit Approval(owner: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], spender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 0)
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [22174] WETH9::deposit{value: 10000000000000000}()
+    │   │   │   ├─ emit Deposit(dst: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], wad: 10000000000000000 [1e16])
+    │   │   │   └─ ← [Stop]
+    │   │   ├─ [4157] WETH9::transfer(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 10000000000000000 [1e16])
+    │   │   │   ├─ emit Transfer(from: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], value: 10000000000000000 [1e16])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [58298] UniswapV2Pair::mint(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF])
+    │   │   │   ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   ├─ [896] MEME_Token::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 105000000000000000000 [1.05e20]
+    │   │   │   │   └─ ← [Return] 105000000000000000000 [1.05e20]
+    │   │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   └─ ← [Return] 10500000000000000 [1.05e16]
+    │   │   │   ├─ [506] UniswapV2Factory::feeTo() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], value: 1000000000000000000 [1e18])
+    │   │   │   ├─ emit Sync(reserve0: 105000000000000000000 [1.05e20], reserve1: 10500000000000000 [1.05e16])
+    │   │   │   ├─ emit Mint(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0: 100000000000000000000 [1e20], amount1: 10000000000000000 [1e16])
+    │   │   │   └─ ← [Return] 1000000000000000000 [1e18]
+    │   │   ├─ [55] MEME_Inscription::receive{value: 9990000000000000000}()
+    │   │   │   └─ ← [Stop]
+    │   │   └─ ← [Return] 100000000000000000000 [1e20], 10000000000000000 [1e16], 1000000000000000000 [1e18]
+    │   └─ ← [Stop]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [51636] TWAP_MEME::initializePair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2)
+    │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   ├─ [620] UniswapV2Pair::token0() [staticcall]
+    │   │   └─ ← [Return] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2
+    │   ├─ emit PairInitialized(memeToken: 0x03701a3db17248c79AA6512CcDC89c45bc1443E2, pair: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], memeIsToken0: true)
+    │   └─ ← [Stop]
+    ├─ [0] VM::warp(2)
+    │   └─ ← [Return]
+    ├─ [110182] TWAP_MEME::takeSnapshot("Initial Liquidity")
+    │   ├─ [2514] UniswapV2Pair::price0CumulativeLast() [staticcall]
+    │   │   └─ ← [Return] 0
+    │   ├─ [2536] UniswapV2Pair::price1CumulativeLast() [staticcall]
+    │   │   └─ ← [Return] 0
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 105000000000000000000 [1.05e20], 10500000000000000 [1.05e16], 1
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 105000000000000000000 [1.05e20], 10500000000000000 [1.05e16], 1
+    │   ├─ emit SnapshotTaken(snapshotId: 0, description: "Initial Liquidity", timestamp: 2, price: 100000000000000 [1e14])
+    │   └─ ← [Stop]
+    ├─ [3188] TWAP_MEME::getCurrentPrice() [staticcall]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 105000000000000000000 [1.05e20], 10500000000000000 [1.05e16], 1
+    │   └─ ← [Return] 100000000000000 [1e14]
+    ├─ [0] console::log("Initial Price (ETH/MEME):", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [440] UniswapV2Router02::WETH() [staticcall]
+    │   └─ ← [Return] WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]
+    ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    ├─ [0] VM::assertNotEq(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 0x0000000000000000000000000000000000000000, "Pair not created") [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::prank(user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802])
+    │   └─ ← [Return]
+    ├─ [56495] MEME_Inscription::mintInscription{value: 10000000000000000}(0x03701a3db17248c79AA6512CcDC89c45bc1443E2)
+    │   ├─ [398] MEME_Token::decimals() [staticcall]
+    │   │   └─ ← [Return] 18
+    │   ├─ [621] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::totalSupply() [staticcall]
+    │   │   ├─ [455] MEME_Token::totalSupply() [delegatecall]
+    │   │   │   └─ ← [Return] 1000000000000000000000000 [1e24]
+    │   │   └─ ← [Return] 1000000000000000000000000 [1e24]
+    │   ├─ [621] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::minted() [staticcall]
+    │   │   ├─ [455] MEME_Token::minted() [delegatecall]
+    │   │   │   └─ ← [Return] 105000000000000000000 [1.05e20]
+    │   │   └─ ← [Return] 105000000000000000000 [1.05e20]
+    │   ├─ [28829] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::mint(user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], 100000000000000000000 [1e20])
+    │   │   ├─ [28654] MEME_Token::mint(user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], 100000000000000000000 [1e20]) [delegatecall]
+    │   │   │   ├─ emit MintCalled(caller: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], owner: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], to: user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], amount: 100000000000000000000 [1e20])
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], value: 100000000000000000000 [1e20])
+    │   │   │   └─ ← [Stop]
+    │   │   └─ ← [Return]
+    │   ├─ [0] user1::fallback{value: 9500000000000000}()
+    │   │   └─ ← [Stop]
+    │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   ├─ [0] owner::fallback{value: 500000000000000}()
+    │   │   └─ ← [Stop]
+    │   ├─ emit MemeMinted(token: 0x03701a3db17248c79AA6512CcDC89c45bc1443E2, minter: user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], amount: 100)
+    │   └─ ← [Stop]
+    ├─ [0] VM::startPrank(user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802])
+    │   └─ ← [Return]
+    ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802]) [staticcall]
+    │   ├─ [896] MEME_Token::balanceOf(user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802]) [delegatecall]
+    │   │   └─ ← [Return] 100000000000000000000 [1e20]
+    │   └─ ← [Return] 100000000000000000000 [1e20]
+    ├─ [25422] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::approve(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], 100000000000000000000 [1e20])
+    │   ├─ [25244] MEME_Token::approve(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], 100000000000000000000 [1e20]) [delegatecall]
+    │   │   ├─ emit Approval(owner: user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], spender: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], value: 100000000000000000000 [1e20])
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [228741] MEME_Inscription::addLiquidity{value: 5000000000000000000}(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, 100000000000000000000 [1e20], 0, 0)
+    │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   ├─ [27792] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::transferFrom(user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], 100000000000000000000 [1e20])
+    │   │   ├─ [27608] MEME_Token::transferFrom(user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], 100000000000000000000 [1e20]) [delegatecall]
+    │   │   │   ├─ emit Transfer(from: user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], to: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], value: 100000000000000000000 [1e20])
+    │   │   │   ├─ emit Approval(owner: user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], spender: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], value: 0)
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Return] true
+    │   ├─ [23322] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::approve(UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 100000000000000000000 [1e20])
+    │   │   ├─ [23144] MEME_Token::approve(UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], 100000000000000000000 [1e20]) [delegatecall]
+    │   │   │   ├─ emit Approval(owner: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], spender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 100000000000000000000 [1e20])
+    │   │   │   └─ ← [Return] true
+    │   │   └─ ← [Return] true
+    │   ├─ [164162] UniswapV2Router02::addLiquidityETH{value: 5000000000000000000}(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, 100000000000000000000 [1e20], 0, 0, user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], 2)
+    │   │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 105000000000000000000 [1.05e20], 10500000000000000 [1.05e16], 1
+    │   │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [7892] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::transferFrom(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 100000000000000000000 [1e20])
+    │   │   │   ├─ [7708] MEME_Token::transferFrom(MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 100000000000000000000 [1e20]) [delegatecall]
+    │   │   │   │   ├─ emit Transfer(from: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], to: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], value: 100000000000000000000 [1e20])
+    │   │   │   │   ├─ emit Approval(owner: MEME_Inscription: [0x88F59F8826af5e695B13cA934d6c7999875A9EeA], spender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], value: 0)
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [22174] WETH9::deposit{value: 10000000000000000}()
+    │   │   │   ├─ emit Deposit(dst: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], wad: 10000000000000000 [1e16])
+    │   │   │   └─ ← [Stop]
+    │   │   ├─ [4157] WETH9::transfer(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 10000000000000000 [1e16])
+    │   │   │   ├─ emit Transfer(from: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], value: 10000000000000000 [1e16])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [100634] UniswapV2Pair::mint(user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802])
+    │   │   │   ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   ├─ [896] MEME_Token::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 205000000000000000000 [2.05e20]
+    │   │   │   │   └─ ← [Return] 205000000000000000000 [2.05e20]
+    │   │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   └─ ← [Return] 20500000000000000 [2.05e16]
+    │   │   │   ├─ [506] UniswapV2Factory::feeTo() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x0000000000000000000000000000000000000000
+    │   │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: user2: [0x537C8f3d3E18dF5517a58B3fB9D9143697996802], value: 1000000000000000000 [1e18])
+    │   │   │   ├─ emit Sync(reserve0: 205000000000000000000 [2.05e20], reserve1: 20500000000000000 [2.05e16])
+    │   │   │   ├─ emit Mint(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0: 100000000000000000000 [1e20], amount1: 10000000000000000 [1e16])
+    │   │   │   └─ ← [Return] 1000000000000000000 [1e18]
+    │   │   ├─ [55] MEME_Inscription::receive{value: 4990000000000000000}()
+    │   │   │   └─ ← [Stop]
+    │   │   └─ ← [Return] 100000000000000000000 [1e20], 10000000000000000 [1e16], 1000000000000000000 [1e18]
+    │   └─ ← [Stop]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] VM::warp(3)
+    │   └─ ← [Return]
+    ├─ [124082] TWAP_MEME::takeSnapshot("Second Liquidity")
+    │   ├─ [514] UniswapV2Pair::price0CumulativeLast() [staticcall]
+    │   │   └─ ← [Return] 519229685853482762853049632922 [5.192e29]
+    │   ├─ [536] UniswapV2Pair::price1CumulativeLast() [staticcall]
+    │   │   └─ ← [Return] 51922968585348276285304963292200960000 [5.192e37]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 205000000000000000000 [2.05e20], 20500000000000000 [2.05e16], 2
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 205000000000000000000 [2.05e20], 20500000000000000 [2.05e16], 2
+    │   ├─ emit SnapshotTaken(snapshotId: 1, description: "Second Liquidity", timestamp: 3, price: 100000000000000 [1e14])
+    │   └─ ← [Stop]
+    ├─ [3188] TWAP_MEME::getCurrentPrice() [staticcall]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 205000000000000000000 [2.05e20], 20500000000000000 [2.05e16], 2
+    │   └─ ← [Return] 100000000000000 [1e14]
+    ├─ [0] console::log("Second Liquidity Price (ETH/MEME):", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec])
+    │   └─ ← [Return]
+    ├─ [138454] MEME_Inscription::buyMeme{value: 1000000000000000000}(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, 0)
+    │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   ├─ [119068] UniswapV2Router02::swapExactETHForTokensSupportingFeeOnTransferTokens{value: 950000000000000000}(0, [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f, 0x03701a3db17248c79AA6512CcDC89c45bc1443E2], user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec], 3)
+    │   │   ├─ [22174] WETH9::deposit{value: 950000000000000000}()
+    │   │   │   ├─ emit Deposit(dst: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], wad: 950000000000000000 [9.5e17])
+    │   │   │   └─ ← [Stop]
+    │   │   ├─ [1205] UniswapV2Factory::getPair(WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x03701a3db17248c79AA6512CcDC89c45bc1443E2) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [4157] WETH9::transfer(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 950000000000000000 [9.5e17])
+    │   │   │   ├─ emit Transfer(from: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], value: 950000000000000000 [9.5e17])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [3068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec]) [staticcall]
+    │   │   │   ├─ [2896] MEME_Token::balanceOf(user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec]) [delegatecall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [1205] UniswapV2Factory::getPair(WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x03701a3db17248c79AA6512CcDC89c45bc1443E2) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 205000000000000000000 [2.05e20], 20500000000000000 [2.05e16], 2
+    │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   └─ ← [Return] 970500000000000000 [9.705e17]
+    │   │   ├─ [63757] UniswapV2Pair::swap(200657004082054461840 [2.006e20], 0, user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec], 0x)
+    │   │   │   ├─ [24202] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::transfer(user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec], 200657004082054461840 [2.006e20])
+    │   │   │   │   ├─ [24024] MEME_Token::transfer(user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec], 200657004082054461840 [2.006e20]) [delegatecall]
+    │   │   │   │   │   ├─ emit Transfer(from: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], to: user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec], value: 200657004082054461840 [2.006e20])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   ├─ [896] MEME_Token::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 4342995917945538160 [4.342e18]
+    │   │   │   │   └─ ← [Return] 4342995917945538160 [4.342e18]
+    │   │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   └─ ← [Return] 970500000000000000 [9.705e17]
+    │   │   │   ├─ emit Sync(reserve0: 4342995917945538160 [4.342e18], reserve1: 970500000000000000 [9.705e17])
+    │   │   │   ├─ emit Swap(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0In: 0, amount1In: 950000000000000000 [9.5e17], amount0Out: 200657004082054461840 [2.006e20], amount1Out: 0, to: user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec])
+    │   │   │   └─ ← [Stop]
+    │   │   ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec]) [staticcall]
+    │   │   │   ├─ [896] MEME_Token::balanceOf(user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec]) [delegatecall]
+    │   │   │   │   └─ ← [Return] 200657004082054461840 [2.006e20]
+    │   │   │   └─ ← [Return] 200657004082054461840 [2.006e20]
+    │   │   └─ ← [Stop]
+    │   ├─ [0] owner::fallback{value: 50000000000000000}()
+    │   │   └─ ← [Stop]
+    │   └─ ← [Stop]
+    ├─ [0] VM::warp(4)
+    │   └─ ← [Return]
+    ├─ [124082] TWAP_MEME::takeSnapshot("First Buy")
+    │   ├─ [514] UniswapV2Pair::price0CumulativeLast() [staticcall]
+    │   │   └─ ← [Return] 1038459371706965525706099265844 [1.038e30]
+    │   ├─ [536] UniswapV2Pair::price1CumulativeLast() [staticcall]
+    │   │   └─ ← [Return] 103845937170696552570609926584401920000 [1.038e38]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 4342995917945538160 [4.342e18], 970500000000000000 [9.705e17], 3
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 4342995917945538160 [4.342e18], 970500000000000000 [9.705e17], 3
+    │   ├─ emit SnapshotTaken(snapshotId: 2, description: "First Buy", timestamp: 4, price: 223463254015466983 [2.234e17])
+    │   └─ ← [Stop]
+    ├─ [3188] TWAP_MEME::getCurrentPrice() [staticcall]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 4342995917945538160 [4.342e18], 970500000000000000 [9.705e17], 3
+    │   └─ ← [Return] 223463254015466983 [2.234e17]
+    ├─ [0] console::log("First Buy Price (ETH/MEME):", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec]) [staticcall]
+    │   ├─ [896] MEME_Token::balanceOf(user3: [0xc0A55e2205B289a967823662B841Bd67Aa362Aec]) [delegatecall]
+    │   │   └─ ← [Return] 200657004082054461840 [2.006e20]
+    │   └─ ← [Return] 200657004082054461840 [2.006e20]
+    ├─ [0] console::log("User3 MEME Balance after first buy:", 200) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0])
+    │   └─ ← [Return]
+    ├─ [138454] MEME_Inscription::buyMeme{value: 2000000000000000000}(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, 0)
+    │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   ├─ [119068] UniswapV2Router02::swapExactETHForTokensSupportingFeeOnTransferTokens{value: 1900000000000000000}(0, [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f, 0x03701a3db17248c79AA6512CcDC89c45bc1443E2], user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0], 4)
+    │   │   ├─ [22174] WETH9::deposit{value: 1900000000000000000}()
+    │   │   │   ├─ emit Deposit(dst: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], wad: 1900000000000000000 [1.9e18])
+    │   │   │   └─ ← [Stop]
+    │   │   ├─ [1205] UniswapV2Factory::getPair(WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x03701a3db17248c79AA6512CcDC89c45bc1443E2) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [4157] WETH9::transfer(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 1900000000000000000 [1.9e18])
+    │   │   │   ├─ emit Transfer(from: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], value: 1900000000000000000 [1.9e18])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [3068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0]) [staticcall]
+    │   │   │   ├─ [2896] MEME_Token::balanceOf(user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0]) [delegatecall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [1205] UniswapV2Factory::getPair(WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x03701a3db17248c79AA6512CcDC89c45bc1443E2) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 4342995917945538160 [4.342e18], 970500000000000000 [9.705e17], 3
+    │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   └─ ← [Return] 2870500000000000000 [2.87e18]
+    │   │   ├─ [63757] UniswapV2Pair::swap(2871731767440740343 [2.871e18], 0, user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0], 0x)
+    │   │   │   ├─ [24202] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::transfer(user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0], 2871731767440740343 [2.871e18])
+    │   │   │   │   ├─ [24024] MEME_Token::transfer(user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0], 2871731767440740343 [2.871e18]) [delegatecall]
+    │   │   │   │   │   ├─ emit Transfer(from: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], to: user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0], value: 2871731767440740343 [2.871e18])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   ├─ [896] MEME_Token::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 1471264150504797817 [1.471e18]
+    │   │   │   │   └─ ← [Return] 1471264150504797817 [1.471e18]
+    │   │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   └─ ← [Return] 2870500000000000000 [2.87e18]
+    │   │   │   ├─ emit Sync(reserve0: 1471264150504797817 [1.471e18], reserve1: 2870500000000000000 [2.87e18])
+    │   │   │   ├─ emit Swap(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0In: 0, amount1In: 1900000000000000000 [1.9e18], amount0Out: 2871731767440740343 [2.871e18], amount1Out: 0, to: user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0])
+    │   │   │   └─ ← [Stop]
+    │   │   ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0]) [staticcall]
+    │   │   │   ├─ [896] MEME_Token::balanceOf(user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0]) [delegatecall]
+    │   │   │   │   └─ ← [Return] 2871731767440740343 [2.871e18]
+    │   │   │   └─ ← [Return] 2871731767440740343 [2.871e18]
+    │   │   └─ ← [Stop]
+    │   ├─ [0] owner::fallback{value: 100000000000000000}()
+    │   │   └─ ← [Stop]
+    │   └─ ← [Stop]
+    ├─ [0] VM::warp(5)
+    │   └─ ← [Return]
+    ├─ [124082] TWAP_MEME::takeSnapshot("Second Buy")
+    │   ├─ [514] UniswapV2Pair::price0CumulativeLast() [staticcall]
+    │   │   └─ ← [Return] 1161326011194186391694532231333003 [1.161e33]
+    │   ├─ [536] UniswapV2Pair::price1CumulativeLast() [staticcall]
+    │   │   └─ ← [Return] 103869172744175561532805495404061460704 [1.038e38]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 1471264150504797817 [1.471e18], 2870500000000000000 [2.87e18], 4
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 1471264150504797817 [1.471e18], 2870500000000000000 [2.87e18], 4
+    │   ├─ emit SnapshotTaken(snapshotId: 3, description: "Second Buy", timestamp: 5, price: 1951043256926444937 [1.951e18])
+    │   └─ ← [Stop]
+    ├─ [3188] TWAP_MEME::getCurrentPrice() [staticcall]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 1471264150504797817 [1.471e18], 2870500000000000000 [2.87e18], 4
+    │   └─ ← [Return] 1951043256926444937 [1.951e18]
+    ├─ [0] console::log("Second Buy Price (ETH/MEME):", 1) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0]) [staticcall]
+    │   ├─ [896] MEME_Token::balanceOf(user4: [0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0]) [delegatecall]
+    │   │   └─ ← [Return] 2871731767440740343 [2.871e18]
+    │   └─ ← [Return] 2871731767440740343 [2.871e18]
+    ├─ [0] console::log("User4 MEME Balance after second buy:", 2) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF])
+    │   └─ ← [Return]
+    ├─ [136454] MEME_Inscription::buyMeme{value: 3000000000000000000}(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, 0)
+    │   ├─ [1205] UniswapV2Factory::getPair(0x03701a3db17248c79AA6512CcDC89c45bc1443E2, WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   ├─ [117068] UniswapV2Router02::swapExactETHForTokensSupportingFeeOnTransferTokens{value: 2850000000000000000}(0, [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f, 0x03701a3db17248c79AA6512CcDC89c45bc1443E2], user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], 5)
+    │   │   ├─ [22174] WETH9::deposit{value: 2850000000000000000}()
+    │   │   │   ├─ emit Deposit(dst: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], wad: 2850000000000000000 [2.85e18])
+    │   │   │   └─ ← [Stop]
+    │   │   ├─ [1205] UniswapV2Factory::getPair(WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x03701a3db17248c79AA6512CcDC89c45bc1443E2) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [4157] WETH9::transfer(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], 2850000000000000000 [2.85e18])
+    │   │   │   ├─ emit Transfer(from: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], to: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], value: 2850000000000000000 [2.85e18])
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF]) [staticcall]
+    │   │   │   ├─ [896] MEME_Token::balanceOf(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF]) [delegatecall]
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [1205] UniswapV2Factory::getPair(WETH9: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 0x03701a3db17248c79AA6512CcDC89c45bc1443E2) [staticcall]
+    │   │   │   └─ ← [Return] UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]
+    │   │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   │   └─ ← [Return] 1471264150504797817 [1.471e18], 2870500000000000000 [2.87e18], 4
+    │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   └─ ← [Return] 5720500000000000000 [5.72e18]
+    │   │   ├─ [63757] UniswapV2Pair::swap(731890776433942481 [7.318e17], 0, user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], 0x)
+    │   │   │   ├─ [24202] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::transfer(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], 731890776433942481 [7.318e17])
+    │   │   │   │   ├─ [24024] MEME_Token::transfer(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], 731890776433942481 [7.318e17]) [delegatecall]
+    │   │   │   │   │   ├─ emit Transfer(from: UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d], to: user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF], value: 731890776433942481 [7.318e17])
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   ├─ [896] MEME_Token::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 739373374070855336 [7.393e17]
+    │   │   │   │   └─ ← [Return] 739373374070855336 [7.393e17]
+    │   │   │   ├─ [824] WETH9::balanceOf(UniswapV2Pair: [0x38D26a1eF18E633f4702F82cc693730aD69F037d]) [staticcall]
+    │   │   │   │   └─ ← [Return] 5720500000000000000 [5.72e18]
+    │   │   │   ├─ emit Sync(reserve0: 739373374070855336 [7.393e17], reserve1: 5720500000000000000 [5.72e18])
+    │   │   │   ├─ emit Swap(sender: UniswapV2Router02: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], amount0In: 0, amount1In: 2850000000000000000 [2.85e18], amount0Out: 731890776433942481 [7.318e17], amount1Out: 0, to: user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF])
+    │   │   │   └─ ← [Stop]
+    │   │   ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF]) [staticcall]
+    │   │   │   ├─ [896] MEME_Token::balanceOf(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF]) [delegatecall]
+    │   │   │   │   └─ ← [Return] 731890776433942481 [7.318e17]
+    │   │   │   └─ ← [Return] 731890776433942481 [7.318e17]
+    │   │   └─ ← [Stop]
+    │   ├─ [0] owner::fallback{value: 150000000000000000}()
+    │   │   └─ ← [Stop]
+    │   └─ ← [Stop]
+    ├─ [0] VM::warp(6)
+    │   └─ ← [Return]
+    ├─ [124082] TWAP_MEME::takeSnapshot("Third Buy")
+    │   ├─ [514] UniswapV2Pair::price0CumulativeLast() [staticcall]
+    │   │   └─ ← [Return] 11291721784998925014418488274182035 [1.129e34]
+    │   ├─ [536] UniswapV2Pair::price1CumulativeLast() [staticcall]
+    │   │   └─ ← [Return] 103871834036712311567132508389686348913 [1.038e38]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 739373374070855336 [7.393e17], 5720500000000000000 [5.72e18], 5
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 739373374070855336 [7.393e17], 5720500000000000000 [5.72e18], 5
+    │   ├─ emit SnapshotTaken(snapshotId: 4, description: "Third Buy", timestamp: 6, price: 7736956997117663737 [7.736e18])
+    │   └─ ← [Stop]
+    ├─ [3188] TWAP_MEME::getCurrentPrice() [staticcall]
+    │   ├─ [1150] UniswapV2Pair::getReserves() [staticcall]
+    │   │   └─ ← [Return] 739373374070855336 [7.393e17], 5720500000000000000 [5.72e18], 5
+    │   └─ ← [Return] 7736956997117663737 [7.736e18]
+    ├─ [0] console::log("Third Buy Price (ETH/MEME):", 7) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1068] 0x03701a3db17248c79AA6512CcDC89c45bc1443E2::balanceOf(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF]) [staticcall]
+    │   ├─ [896] MEME_Token::balanceOf(user1: [0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF]) [delegatecall]
+    │   │   └─ ← [Return] 731890776433942481 [7.318e17]
+    │   └─ ← [Return] 731890776433942481 [7.318e17]
+    ├─ [0] console::log("User1 MEME Balance after third buy:", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [507] TWAP_MEME::getSnapshotCount() [staticcall]
+    │   └─ ← [Return] 5
+    ├─ [0] console::log("Total snapshots taken:", 5) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [3798] TWAP_MEME::getSnapshot(0) [staticcall]
+    │   └─ ← [Return] 2, 100000000000000 [1e14], "Initial Liquidity"
+    ├─ [0] console::log("Snapshot %s: %s - Price: %s wei", 0, "Initial Liquidity", 100000000000000 [1e14]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [3798] TWAP_MEME::getSnapshot(1) [staticcall]
+    │   └─ ← [Return] 3, 100000000000000 [1e14], "Second Liquidity"
+    ├─ [0] console::log("Snapshot %s: %s - Price: %s wei", 1, "Second Liquidity", 100000000000000 [1e14]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [3798] TWAP_MEME::getSnapshot(2) [staticcall]
+    │   └─ ← [Return] 4, 223463254015466983 [2.234e17], "First Buy"
+    ├─ [0] console::log("Snapshot %s: %s - Price: %s wei", 2, "First Buy", 223463254015466983 [2.234e17]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [3798] TWAP_MEME::getSnapshot(3) [staticcall]
+    │   └─ ← [Return] 5, 1951043256926444937 [1.951e18], "Second Buy"
+    ├─ [0] console::log("Snapshot %s: %s - Price: %s wei", 3, "Second Buy", 1951043256926444937 [1.951e18]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [3798] TWAP_MEME::getSnapshot(4) [staticcall]
+    │   └─ ← [Return] 6, 7736956997117663737 [7.736e18], "Third Buy"
+    ├─ [0] console::log("Snapshot %s: %s - Price: %s wei", 4, "Third Buy", 7736956997117663737 [7.736e18]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [5933] TWAP_MEME::calculateTWAP(0, 4) [staticcall]
+    │   └─ ← [Return] 5001246888743138360557 [5.001e21]
+    ├─ [0] console::log("Overall TWAP (Initial to Third Buy):", 5001) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [5933] TWAP_MEME::calculateTWAP(1, 4) [staticcall]
+    │   └─ ← [Return] 3334995851657517814076 [3.334e21]
+    ├─ [0] console::log("TWAP (Second Liquidity to Third Buy):", 3334) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [5933] TWAP_MEME::calculateTWAP(2, 4) [staticcall]
+    │   └─ ← [Return] 2493777486276721114 [2.493e18]
+    ├─ [0] console::log("TWAP (First Buy to Third Buy):", 2) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [26422] TWAP_MEME::summarizePriceChanges() [staticcall]
+    │   └─ ← [Return] ["Initial Liquidity", "Second Liquidity", "First Buy", "Second Buy", "Third Buy"], [100000000000000 [1e14], 100000000000000 [1e14], 223463254015466983 [2.234e17], 1951043256926444937 [1.951e18], 7736956997117663737 [7.736e18]], [0, 22336325 [2.233e7], 77309 [7.73e4], 29655 [2.965e4]]
+    ├─ [0] console::log("\nPrice Changes Summary:") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("%s: %s wei", "Initial Liquidity", 100000000000000 [1e14]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("%s: %s wei", "Second Liquidity", 100000000000000 [1e14]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  Change from previous: %s%%", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("%s: %s wei", "First Buy", 223463254015466983 [2.234e17]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  Change from previous: %s%%", 223363 [2.233e5]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("%s: %s wei", "Second Buy", 1951043256926444937 [1.951e18]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  Change from previous: %s%%", 773) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("%s: %s wei", "Third Buy", 7736956997117663737 [7.736e18]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  Change from previous: %s%%", 296) [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 12.12ms (7.23ms CPU time)
+
+Ran 1 test suite in 20.93ms (12.12ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
