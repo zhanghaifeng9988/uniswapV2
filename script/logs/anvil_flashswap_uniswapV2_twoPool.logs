@@ -1,0 +1,139 @@
+ forge script script/deployTwoUniswapSystems.s.sol --rpc-url http://localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
+[⠊] Compiling...
+No files changed, compilation skipped
+Warning: Detected artifacts built from source files that no longer exist. Run `forge clean` to make sure
+ builds are in sync with project files.
+ - D:/uniswapV2\script/erc20Token_flashswap.s.sol
+Script ran successfully.
+
+== Logs ==
+  准备部署两个独立的Uniswap系统并创建流动池
+  系统A - UniswapV2Factory 已部署到地址: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+  系统A - UniswapV2Router02 已部署到地址: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+  系统B - UniswapV2Factory 已部署到地址: 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9
+  系统B - UniswapV2Router02 已部署到地址: 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707
+  PoolA 创建成功，地址: 0xf8d7F2F2138A35f3a477E83c6CaC59ceCFc6D51d
+  PoolA 添加流动性:
+  - TokenA 数量: 100000000000000000000000
+  - TokenB 数量: 100000000000000000000000
+  - 获得的LP代币数量: 99999999999999999999000
+  PoolB 创建成功，地址: 0xA43F71AE864dA7AdA5B597aD8Ec43381Fd9F96B7
+  PoolB 添加流动性:
+  - TokenA 数量: 100000000000000000000000
+  - TokenB 数量: 500000000000000000000000
+  - 获得的LP代币数量: 223606797749978969639917
+
+部署摘要:
+  =======================
+  TokenA 地址: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  TokenB 地址: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  系统A - Factory 地址: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+  系统A - Router 地址: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+  系统A - Pair 地址 (PoolA): 0xf8d7F2F2138A35f3a477E83c6CaC59ceCFc6D51d
+  系统B - Factory 地址: 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9
+  系统B - Router 地址: 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707
+  系统B - Pair 地址 (PoolB): 0xA43F71AE864dA7AdA5B597aD8Ec43381Fd9F96B7
+  =======================
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 31337
+
+Estimated gas price: 1.761162501 gwei
+
+Estimated total gas used for script: 21729735
+
+Estimated amount required: 0.038269594438667235 ETH
+
+==========================
+
+##### anvil-hardhat
+✅  [Success] Hash: 0x63005f4f44b1d75bd2dfed1d2da3d02a26e50691ed51544d0bfdbcc1cbb8387a
+Contract Address: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+Block: 3
+Paid: 0.001871845575952474 ETH (2413966 gas * 0.775423339 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0xd61a435eb412ad23e490cdb5f9c395c88ffb11ae19d6b7390efeeb313a3e8e90
+Contract Address: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+Block: 4
+Paid: 0.002306485222017025 ETH (3323015 gas * 0.694094135 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0x2d7ad2c7c4a5d2ff7c243b70a5b1eed166aaa447ed5a5c3824efeb99543e0b6d
+Contract Address: 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9
+Block: 5
+Paid: 0.001512477829901314 ETH (2413966 gas * 0.626553079 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0x95d3f06c6e0ecc28d6bd222688e0e0897793f27133b102b627989374d69af50f
+Contract Address: 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707
+Block: 6
+Paid: 0.001863666113934781 ETH (3323003 gas * 0.560837927 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0x659aadcce9a349ed44297268e85699f9dbc7a478c3118754ee1f9db709eb8344
+Block: 7
+Paid: 0.000018278145996752 ETH (36104 gas * 0.506263738 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0xabe748f0f12c8bc6355d06596e1face1eadb7361f006630db9de3125590fc3db
+Block: 8
+Paid: 0.000015998877045256 ETH (36104 gas * 0.443133089 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0x19240f5b635ccf8e6f9d20dbdd29400a70359533a1dd66bf106da67d5b1d1f35
+Block: 9
+Paid: 0.000017841463992446 ETH (45998 gas * 0.387874777 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0x847d30d94459e7e848358ba952d1c4ddb90b734cbd1773818d181714ba80cdf3
+Block: 10
+Paid: 0.000015618119935782 ETH (45998 gas * 0.339539109 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0x6daa998b67cbcd3f8e9d6270b58ecfc2521c6434066db92241e9ed35b46a8d5c
+Block: 11
+Paid: 0.000656386610091768 ETH (2208369 gas * 0.297226872 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0x217a64d6a5e47903a1530f9e43aee8e8110accf2046734fe84b28c3ee4c097d5
+Block: 12
+Paid: 0.000012214465405196 ETH (45998 gas * 0.265543402 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0xe7dcc1de8cd69ade1ace02174e7267f462de7ac9a1521265fa410eb3eb1d88ac
+Block: 13
+Paid: 0.00001069233928547 ETH (45998 gas * 0.232452265 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0xc448c66a59c55fc05ab24ff06504ed69a1585953abe84e5e29c18a7932914c96
+Block: 14
+Paid: 0.000449405414915075 ETH (2208545 gas * 0.203484835 gwei)
+
+✅ Sequence #1 on anvil-hardhat | Total Paid: 0.008750910178473339 ETH (16147064 gas * avg 0.44436888 gwe)
+i)
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: D:/uniswapV2/broadcast\deployTwoUniswapSystems.s.sol\31337\run-latest.json
+
+Sensitive values saved to: D:/uniswapV2/cache\deployTwoUniswapSystems.s.sol\31337\run-latest.json
+
+

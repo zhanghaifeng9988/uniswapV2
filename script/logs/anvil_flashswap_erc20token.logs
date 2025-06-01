@@ -1,0 +1,64 @@
+forge script script/deployErc20Token_flashswap.s.sol --rpc-url http://localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
+[⠊] Compiling...
+[⠔] Compiling 1 files with Solc 0.8.20
+[⠒] Solc 0.8.20 finished in 4.47s
+Compiler run successful with warnings:
+Warning (2018): Function state mutability can be restricted to pure
+ --> script/deployErc20Token_flashswap.s.sol:9:5:
+  |
+9 |     function setUp() public {
+  |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning: Detected artifacts built from source files that no longer exist. Run `forge clean` to make sure
+ builds are in sync with project files.
+ - D:/uniswapV2\script/erc20Token_flashswap.s.sol
+Script ran successfully.
+
+== Logs ==
+  准备部署 TokenA 和 TokenB 到 Sepolia 测试网
+  TokenA 已部署到地址: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  TokenB 已部署到地址: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+
+部署摘要:
+  ====================
+  TokenA (TKA) 地址: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  TokenB (TKB) 地址: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  ====================
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 31337
+
+Estimated gas price: 2.000000001 gwei
+
+Estimated total gas used for script: 1741350
+
+Estimated amount required: 0.00348270000174135 ETH
+
+==========================
+
+##### anvil-hardhat
+✅  [Success] Hash: 0x07d4a4d9adf9cb0129d1631157d8655d8c842487f5c27cbb6ff4cbe05de4bba6
+Contract Address: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+Block: 1
+Paid: 0.00066975000066975 ETH (669750 gas * 1.000000001 gwei)
+
+
+##### anvil-hardhat
+✅  [Success] Hash: 0xb72252f1789df93c117723ea97d9aa09ca964b289bb4ed5a66751ddac9b4f64d
+Contract Address: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+Block: 2
+Paid: 0.00058976929285725 ETH (669750 gas * 0.880581251 gwei)
+
+✅ Sequence #1 on anvil-hardhat | Total Paid: 0.001259519293527 ETH (1339500 gas * avg 0.940290626 gwei)
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: D:/uniswapV2/broadcast\deployErc20Token_flashswap.s.sol\31337\run-latest.json
+
+Sensitive values saved to: D:/uniswapV2/cache\deployErc20Token_flashswap.s.sol\31337\run-latest.json

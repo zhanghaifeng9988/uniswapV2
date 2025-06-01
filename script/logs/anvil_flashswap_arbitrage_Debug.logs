@@ -1,0 +1,52 @@
+$ forge script script/deployFlashSwapArbitrageDebug.s.sol:DeployFlashSwapArbitrageDebug --rpc-url http://localhost:8545 --broadcast
+[⠊] Compiling...
+[⠑] Compiling 2 files with Solc 0.8.20
+[⠘] Solc 0.8.20 finished in 5.64s
+Compiler run successful!
+Warning: Detected artifacts built from source files that no longer exist. Run `forge
+ clean` to make sure builds are in sync with project files.
+ - D:/uniswapV2\script/erc20Token_flashswap.s.sol
+Script ran successfully.
+
+== Logs ==
+  FlashSwapArbitrageDebug deployed at: 0xA15BB66138824a1c7167f5E85b957d04Dd34E468
+  PairA: 0xf8d7F2F2138A35f3a477E83c6CaC59ceCFc6D51d
+  PairB: 0xA43F71AE864dA7AdA5B597aD8Ec43381Fd9F96B7
+  TokenA: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  TokenB: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  RouterB: 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 31337
+
+Estimated gas price: 0.363588551 gwei
+
+Estimated total gas used for script: 1556844
+
+Estimated amount required: 0.000566050654093044 ETH
+
+==========================
+
+##### anvil-hardhat
+✅  [Success] Hash: 0x24c9612cfe51cd7be9df1d03016bf60ae933b310ee668bf0f9d726caf7e15dd
+2
+Contract Address: 0xA15BB66138824a1c7167f5E85b957d04Dd34E468
+Block: 16
+Paid: 0.000192713357342025 ETH (1197573 gas * 0.160919925 gwei)
+
+✅ Sequence #1 on anvil-hardhat | Total Paid: 0.000192713357342025 ETH (1197573 gas *avg 0.160919925 gwei)
+ avg 0.160919925 gwei)
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: D:/uniswapV2/broadcast\deployFlashSwapArbitrageDebug.s.sol\31
+337\run-latest.json
+
+Sensitive values saved to: D:/uniswapV2/cache\deployFlashSwapArbitrageDebug.s.sol\31
+337\run-latest.json
