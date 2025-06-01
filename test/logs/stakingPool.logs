@@ -1,0 +1,222 @@
+Compiling 1 files with Solc 0.8.20
+Solc 0.8.20 finished in 13.96s
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+   --> src/Pledge-based_mining_loaning/StakingPool.sol:224:14:
+    |
+224 |             (bool success, ) = lendingProtocol.call{value: amount}(
+    |              ^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> src/Pledge-based_mining_loaning/StakingPool.sol:241:14:
+    |
+241 |             (bool success, ) = lendingProtocol.call(
+    |              ^^^^^^^^^^^^
+
+
+Ran 6 tests for test/StakingPoolTest.sol:StakingPoolTest
+[PASS] testClaim() (gas: 207464)
+Traces:
+  [232964] StakingPoolTest::testClaim()
+    ├─ [0] VM::startPrank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return]
+    ├─ [82240] StakingPool::stake{value: 1000000000000000000}()
+    │   ├─ emit Staked(user: ECRecover: [0x0000000000000000000000000000000000000001], amount: 1000000000000000000 [1e18])
+    │   └─ ← [Return]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] VM::roll(6)
+    │   └─ ← [Return]
+    ├─ [0] VM::startPrank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return]
+    ├─ [2584] KKToken::balanceOf(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [121777] StakingPool::claim()
+    │   ├─ [48712] KKToken::mint(StakingPool: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 50000000000000000000 [5e19])
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: StakingPool: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], value: 50000000000000000000 [5e19])
+    │   │   └─ ← [Return]
+    │   ├─ [22941] KKToken::transfer(ECRecover: [0x0000000000000000000000000000000000000001], 50000000000000000000 [5e19])
+    │   │   ├─ emit Transfer(from: StakingPool: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], to: ECRecover: [0x0000000000000000000000000000000000000001], value: 50000000000000000000 [5e19])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Claimed(user: ECRecover: [0x0000000000000000000000000000000000000001], amount: 50000000000000000000 [5e19])
+    │   └─ ← [Return]
+    ├─ [584] KKToken::balanceOf(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 50000000000000000000 [5e19]
+    ├─ [0] VM::assertEq(50000000000000000000 [5e19], 50000000000000000000 [5e19]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    └─ ← [Return]
+
+[PASS] testEarnRewards() (gas: 99985)
+Traces:
+  [102785] StakingPoolTest::testEarnRewards()
+    ├─ [0] VM::startPrank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return]
+    ├─ [82240] StakingPool::stake{value: 1000000000000000000}()
+    │   ├─ emit Staked(user: ECRecover: [0x0000000000000000000000000000000000000001], amount: 1000000000000000000 [1e18])
+    │   └─ ← [Return]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] VM::roll(11)
+    │   └─ ← [Return]
+    ├─ [1714] StakingPool::earned(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 100000000000000000000 [1e20]
+    ├─ [0] VM::assertEq(100000000000000000000 [1e20], 100000000000000000000 [1e20]) [staticcall]
+    │   └─ ← [Return]
+    └─ ← [Return]
+
+[PASS] testMultipleUsers() (gas: 257101)
+Traces:
+  [262701] StakingPoolTest::testMultipleUsers()
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return]
+    ├─ [82240] StakingPool::stake{value: 1000000000000000000}()
+    │   ├─ emit Staked(user: ECRecover: [0x0000000000000000000000000000000000000001], amount: 1000000000000000000 [1e18])
+    │   └─ ← [Return]
+    ├─ [0] VM::roll(3)
+    │   └─ ← [Return]
+    ├─ [0] VM::prank(SHA-256: [0x0000000000000000000000000000000000000002])
+    │   └─ ← [Return]
+    ├─ [147398] StakingPool::stake{value: 1000000000000000000}()
+    │   ├─ [48712] KKToken::mint(StakingPool: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 20000000000000000000 [2e19])
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: StakingPool: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], value: 20000000000000000000 [2e19])
+    │   │   └─ ← [Return]
+    │   ├─ emit Staked(user: SHA-256: [0x0000000000000000000000000000000000000002], amount: 1000000000000000000 [1e18])
+    │   └─ ← [Return]
+    ├─ [0] VM::roll(5)
+    │   └─ ← [Return]
+    ├─ [1714] StakingPool::earned(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 30000000000000000000 [3e19]
+    ├─ [0] VM::assertEq(30000000000000000000 [3e19], 30000000000000000000 [3e19]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [1714] StakingPool::earned(SHA-256: [0x0000000000000000000000000000000000000002]) [staticcall]
+    │   └─ ← [Return] 10000000000000000000 [1e19]
+    ├─ [0] VM::assertEq(10000000000000000000 [1e19], 10000000000000000000 [1e19]) [staticcall]
+    │   └─ ← [Return]
+    └─ ← [Return]
+
+[PASS] testMultipleUsersDetailed() (gas: 272619)
+Logs:
+  === Start detailed multi-user test ===
+  Start block: 1
+  Block after Alice stakes: 1
+  Block after mining 2 blocks: 3
+  Alice pending rewards: 20
+  Block after Bob stakes: 3
+  Alice pending rewards: 20
+  Bob pending rewards: 0
+  Block after mining 2 more blocks: 5
+  Alice pending rewards: 30
+  Bob pending rewards: 10
+
+Traces:
+  [278219] StakingPoolTest::testMultipleUsersDetailed()
+    ├─ [0] console::log("=== Start detailed multi-user test ===") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Start block:", 1) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return]
+    ├─ [82240] StakingPool::stake{value: 1000000000000000000}()
+    │   ├─ emit Staked(user: ECRecover: [0x0000000000000000000000000000000000000001], amount: 1000000000000000000 [1e18])
+    │   └─ ← [Return]
+    ├─ [0] console::log("Block after Alice stakes:", 1) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::roll(3)
+    │   └─ ← [Return]
+    ├─ [0] console::log("Block after mining 2 blocks:", 3) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1714] StakingPool::earned(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 20000000000000000000 [2e19]
+    ├─ [0] console::log("Alice pending rewards:", 20) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(SHA-256: [0x0000000000000000000000000000000000000002])
+    │   └─ ← [Return]
+    ├─ [147398] StakingPool::stake{value: 1000000000000000000}()
+    │   ├─ [48712] KKToken::mint(StakingPool: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 20000000000000000000 [2e19])
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: StakingPool: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], value: 20000000000000000000 [2e19])
+    │   │   └─ ← [Return]
+    │   ├─ emit Staked(user: SHA-256: [0x0000000000000000000000000000000000000002], amount: 1000000000000000000 [1e18])
+    │   └─ ← [Return]
+    ├─ [0] console::log("Block after Bob stakes:", 3) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1132] StakingPool::earned(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 20000000000000000000 [2e19]
+    ├─ [0] console::log("Alice pending rewards:", 20) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1132] StakingPool::earned(SHA-256: [0x0000000000000000000000000000000000000002]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] console::log("Bob pending rewards:", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::roll(5)
+    │   └─ ← [Return]
+    ├─ [0] console::log("Block after mining 2 more blocks:", 5) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1714] StakingPool::earned(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 30000000000000000000 [3e19]
+    ├─ [0] console::log("Alice pending rewards:", 30) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1714] StakingPool::earned(SHA-256: [0x0000000000000000000000000000000000000002]) [staticcall]
+    │   └─ ← [Return] 10000000000000000000 [1e19]
+    ├─ [0] console::log("Bob pending rewards:", 10) [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Return]
+
+[PASS] testStake() (gas: 98442)
+Traces:
+  [101242] StakingPoolTest::testStake()
+    ├─ [0] VM::startPrank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return]
+    ├─ [82240] StakingPool::stake{value: 1000000000000000000}()
+    │   ├─ emit Staked(user: ECRecover: [0x0000000000000000000000000000000000000001], amount: 1000000000000000000 [1e18])
+    │   └─ ← [Return]
+    ├─ [549] StakingPool::balanceOf(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 1000000000000000000 [1e18]
+    ├─ [0] VM::assertEq(1000000000000000000 [1e18], 1000000000000000000 [1e18]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    └─ ← [Return]
+
+[PASS] testUnstake() (gas: 220996)
+Traces:
+  [246496] StakingPoolTest::testUnstake()
+    ├─ [0] VM::startPrank(ECRecover: [0x0000000000000000000000000000000000000001])
+    │   └─ ← [Return]
+    ├─ [82240] StakingPool::stake{value: 2000000000000000000}()
+    │   ├─ emit Staked(user: ECRecover: [0x0000000000000000000000000000000000000001], amount: 2000000000000000000 [2e18])
+    │   └─ ← [Return]
+    ├─ [0] VM::roll(4)
+    │   └─ ← [Return]
+    ├─ [2584] KKToken::balanceOf(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [134042] StakingPool::unstake(1000000000000000000 [1e18])
+    │   ├─ [48712] KKToken::mint(StakingPool: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], 30000000000000000000 [3e19])
+    │   │   ├─ emit Transfer(from: 0x0000000000000000000000000000000000000000, to: StakingPool: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], value: 30000000000000000000 [3e19])
+    │   │   └─ ← [Return]
+    │   ├─ [22941] KKToken::transfer(ECRecover: [0x0000000000000000000000000000000000000001], 30000000000000000000 [3e19])
+    │   │   ├─ emit Transfer(from: StakingPool: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], to: ECRecover: [0x0000000000000000000000000000000000000001], value: 30000000000000000000 [3e19])
+    │   │   └─ ← [Return] true
+    │   ├─ emit Claimed(user: ECRecover: [0x0000000000000000000000000000000000000001], amount: 30000000000000000000 [3e19])
+    │   ├─ [3000] ECRecover::fallback{value: 1000000000000000000}()
+    │   │   └─ ← [Return]
+    │   ├─ emit Unstaked(user: ECRecover: [0x0000000000000000000000000000000000000001], amount: 1000000000000000000 [1e18])
+    │   └─ ← [Return]
+    ├─ [0] VM::assertEq(1000000000000000000 [1e18], 1000000000000000000 [1e18]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [549] StakingPool::balanceOf(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 1000000000000000000 [1e18]
+    ├─ [0] VM::assertEq(1000000000000000000 [1e18], 1000000000000000000 [1e18]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [584] KKToken::balanceOf(ECRecover: [0x0000000000000000000000000000000000000001]) [staticcall]
+    │   └─ ← [Return] 30000000000000000000 [3e19]
+    ├─ [0] VM::assertEq(30000000000000000000 [3e19], 30000000000000000000 [3e19]) [staticcall]
+    │   └─ ← [Return]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    └─ ← [Return]
+
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 1.63ms (2.29ms CPU time)
+
+Ran 1 test suite in 28.57ms (1.63ms CPU time): 6 tests passed, 0 failed, 0 skipped (6 total tests)
