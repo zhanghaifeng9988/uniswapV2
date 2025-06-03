@@ -1,0 +1,57 @@
+Administrator@MS-CEVXSRKPSHOI MINGW64 /d/uniswapV2 (master)
+$ forge script script/deployOpenspaceNFT.s.sol --rpc-url sepolia --broadcast --keystore .keys/hf
+[⠊] Compiling...
+[⠃] Compiling 1 files with Solc 0.8.20
+[⠊] Solc 0.8.20 finished in 3.83s
+Compiler run successful!
+Warning: Detected artifacts built from source files that no longer exist. Run `f
+orge clean` to make sure builds are in sync with project files.
+ - D:/uniswapV2\script/deployFlashSwapArbitrage.s.sol
+ - D:/uniswapV2\src/arbitrage/flashSwapArbitrageSimple.sol
+ - D:/uniswapV2\src/arbitrage/flashSwapArbitrage.sol
+ - D:/uniswapV2\script/erc20Token_flashswap.s.sol
+ - D:/uniswapV2\script/deployFlashSwapArbitrageSimple.s.sol
+Enter keystore password:
+Script ran successfully.
+
+== Logs ==
+  OpenspaceNFT deployed to: 0xacbd47221c865EC595Ff2604e92a9140d9637b77
+  Owner: 0x44f08Ed7D8F63b345F0fc512aEcfaA4F16831643
+  Presale status: false
+  Next Token ID: 1
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 11155111
+
+Estimated gas price: 0.001200688 gwei
+
+Estimated total gas used for script: 1438152
+
+Estimated amount required: 0.000001726771848576 ETH
+
+==========================
+
+##### sepolia
+✅  [Success] Hash: 0x859b3aaa68d045a891e5e4f542d6fbb3682edcd745ac5ab01312c3e20a0
+7bf01
+Contract Address: 0xacbd47221c865EC595Ff2604e92a9140d9637b77
+Block: 8466982
+Paid: 0.000001327942264167 ETH (1106271 gas * 0.001200377 gwei)
+
+✅ Sequence #1 on sepolia | Total Paid: 0.000001327942264167 ETH (1106271 gas * ag 0.001200377 gwei)
+vg 0.001200377 gwei)
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: D:/uniswapV2/broadcast\deployOpenspaceNFT.s.sol\11155111\
+run-latest.json
+
+Sensitive values saved to: D:/uniswapV2/cache\deployOpenspaceNFT.s.sol\11155111\
+run-latest.json
+
