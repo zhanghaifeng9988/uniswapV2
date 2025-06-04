@@ -34,7 +34,7 @@ class FlashbotsNFTBundle {
         console.log('✅ Flashbots provider initialized');
     }
 
-    async createBundle(presaleAmount = 1) {
+    async createBundle(presaleAmount = 1, minerTip = "0.001") {
         try {
             console.log('🔄 Creating transaction bundle...');
             
@@ -80,16 +80,31 @@ class FlashbotsNFTBundle {
                 chainId: 11155111
             };
             
+            // 交易3: 矿工激励交易
+            const minerTipValue = ethers.parseEther(minerTip);
+            const minerTipTx = {
+                to: "0x0000000000000000000000000000000000000000", // 将在运行时替换为 block.coinbase
+                value: minerTipValue,
+                gasLimit: 21000,
+                maxFeePerGas: maxFeePerGas,
+                maxPriorityFeePerGas: maxPriorityFeePerGas,
+                nonce: nonce + 2,
+                type: 2,
+                chainId: 11155111
+            };
+            
             // 签名交易
             const signedTx1 = await this.wallet.signTransaction(enablePresaleTx);
             const signedTx2 = await this.wallet.signTransaction(presaleTx);
+            const signedTx3 = await this.wallet.signTransaction(minerTipTx);
             
             console.log('✅ Transactions signed');
             console.log(`💰 Presale amount: ${presaleAmount} NFT(s)`);
             console.log(`💰 Total cost: ${ethers.formatEther(presaleValue)} ETH`);
+            console.log(`💰 Miner tip: ${minerTip} ETH`);
             
             return {
-                signedTransactions: [signedTx1, signedTx2],
+                signedTransactions: [signedTx1, signedTx2, signedTx3],
                 targetBlockNumber
             };
             

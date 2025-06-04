@@ -1,45 +1,54 @@
-Administrator@MS-CEVXSRKPSHOI MINGW64 /d/uniswapV2/flashBot (master)
-$ node flashbots-bundle-keystore.js
-� 开始执行Flashbots NFT预售捆绑包
-==================================================
-请输入keystore密码: 
-✅ Keystore解密成功
-� 钱包地址: 0xb8343aDaC1a69a18A7aa391F8F2952e5ACdEcb06
-✅ Flashbots提供者初始化完成
-� 合约状态:
-   - 预售激活: true
-   - 所有者: 0x44f08Ed7D8F63b345F0fc512aEcfaA4F16831643
-   - 下一个Token ID: 1
-   - 钱包地址: 0xb8343aDaC1a69a18A7aa391F8F2952e5ACdEcb06
-� 创建交易捆绑包...
-� 目标区块: 8467682
-� 当前nonce: 3
-� 最大gas费用: 0.01010992 gwei (提高10倍)
-� 优先费用: 0.01 gwei (提高10倍)
-✅ 交易签名完成
-� 预售数量: 1 个NFT
-� 总费用: 0.01 ETH
-� 向Flashbots提交捆绑包...
+$ node execute-multi-user-keys.js 0.002
+� 开始多用户 NFT 预售 (使用私钥文件)
+� 钱包文件: fox1, fox2
+� 购买数量: 1, 2 NFT(s)
+� 矿工小费: 0.002 ETH
+� 开始多用户 NFT 预售 Flashbots 执行
+� 正在初始化钱包...
+� 需要输入 keystore 解密密码
+请输入 keystore 解密密码: 
+✅ 密码输入完成
+� 正在解密 keystore 文件: fox1
+✅ 成功解密钱包: fox1 -> 0xb8343aDaC1a69a18A7aa391F8F2952e5ACdEcb06
+� 钱包 fox1: 0xb8343aDaC1a69a18A7aa391F8F2952e5ACdEcb06
+� 正在解密 keystore 文件: fox2
+✅ 成功解密钱包: fox2 -> 0x8a04c1ac0Fe51EB67C4C098b891c2f3E52D0046B
+� 钱包 fox2: 0x8a04c1ac0Fe51EB67C4C098b891c2f3E52D0046B
+✅ 初始化了 2 个钱包
+✅ Flashbots provider 初始化完成
+� 检查合约状态...
+� 预售状态: 已激活
+� 创建多用户交易捆绑包...
+� 目标区块: 8472642
+� 最大Gas费用: 0.00100005 gwei
+� 钱包 fox1 (0xb8343aDaC1a69a18A7aa391F8F2952e5ACdEcb06): 1 NFT(s), 费用: 0.01
+ETH
+� 钱包 fox2 (0x8a04c1ac0Fe51EB67C4C098b891c2f3E52D0046B): 2 NFT(s), 费用: 0.02
+ETH
+✅ 所有交易已签名
+� 矿工小费: 0.002 ETH
+� 捆绑包包含 4 个交易
+� 向 Flashbots 提交捆绑包...
 ✅ 捆绑包提交成功
-� 捆绑包哈希: 0xce49e51dda19ffec564b7fb991362bd3c9ee2e67ee2af9a561a40c3d7223b4d9
+� 捆绑包哈希: 0x6afcb93fb792dcd506ec5c5c0e783be052a40180ceb23ef3c0750b3f2462d5f
+7
 ⏳ 等待捆绑包被包含...
-� 区块 8467682 统计: {
-  isSimulated: true,
-  isHighPriority: true,
-  simulatedAt: '2025-06-03T11:46:07.5Z',
-  receivedAt: '2025-06-03T11:46:07.494Z'
-}
-✅ 捆绑包模拟成功
-� 区块 8467683 统计: { isSimulated: false }
-� 区块 8467684 统计: { isSimulated: false }
-� 区块 8467685 统计: { isSimulated: false }
-� 区块 8467686 统计: { isSimulated: false }
-⚠️ 捆绑包在预期时间内未被包含
-❌ 捆绑包执行失败或超时
+� 当前区块: 8472641
+⚠️ 获取区块 8472642 统计时出错: Request failed with status 400 (URL: https://r
+elay-sepolia.flashbots.net): {"id":2,"error":{"code":-32602,"message":"block par
+am must be a hex int"},"jsonrpc":"2.0"}
+⚠️ 获取区块 8472643 统计时出错: Client network socket disconnected before secu
+re TLS connection was established
+⚠️ 获取区块 8472644 统计时出错: Request failed with status 400 (URL: https://r
+elay-sepolia.flashbots.net): {"id":4,"error":{"code":-32602,"message":"block par
+am must be a hex int"},"jsonrpc":"2.0"}
+⚠️ 获取区块 8472645 统计时出错: Client network socket disconnected before secu
+re TLS connection was established
+⚠️ 获取区块 8472646 统计时出错: Request failed with status 400 (URL: https://r
+elay-sepolia.flashbots.net): {"id":6,"error":{"code":-32602,"message":"block par
+am must be a hex int"},"jsonrpc":"2.0"}
+❌ 捆绑包在指定区块内未被包含
+❌ 捆绑包未被包含，可能需要增加矿工小费或在主网上尝试
 
 
-## AI对结果的分析
-## 当前状态分析
-- 捆绑包模拟成功 ：证明交易逻辑和Gas费用设置都是正确的
-- 未被包含原因 ：这是Sepolia测试网络的典型表现，Flashbots在测试网上的验证频率很低
-- 后续区块状态 ：8467683-8467686 都显示 isSimulated: false ，说明这些区块没有Flashbots验证
+
