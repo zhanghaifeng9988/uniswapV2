@@ -1,0 +1,18 @@
+{
+  "name": "test1_nftmarket_0605",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ test1_nftmarket_0605",
+    "create-local": "graph create --node http://localhost:8020/ test1_nftmarket_0605",
+    "remove-local": "graph remove --node http://localhost:8020/ test1_nftmarket_0605",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 test1_nftmarket_0605",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.60.0",
+    "@graphprotocol/graph-ts": "0.30.0"
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
+}
